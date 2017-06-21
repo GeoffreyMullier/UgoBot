@@ -3,8 +3,6 @@
 # https://github.com/python-telegram-bot/python-telegram-bot
 # Name: UgoBot
 # Username: @ugoBE_bot
-# Token: 382328302:AAGB0Ad5dikuG38dgQzr1U8rdLDZgV3t2Lk
-# IP (UniBE): 130.92.139.32
 
 """
 
