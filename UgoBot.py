@@ -41,10 +41,15 @@ def echo(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text=update.message.text)
     
 def prombiloop(bot, update):
-    repetition = random.randint(1, 30)
-    for x in range(0,repetition):
+    goahead = True
+    
+    while goahead:
         bot.send_message(chat_id=update.message.chat_id, text="prombi")
 	time.sleep(1.5)
+   
+        prob = random.rand()
+	if prob > 0.9:
+	    goahead = False
 
 def localImage(bot, update, folder, capt):
     """Sends image from local folder"""
