@@ -46,11 +46,11 @@ def prombiloop(bot, update):
         bot.send_message(chat_id=update.message.chat_id, text="prombi")
 	time.sleep(1.5)
 
-def localImage(bot, update, folder):
+def localImage(bot, update, folder, capt):
     """Sends image from local folder"""
     list_im = os.listdir(folder)
     n_im = random.randint(0, len(list_im) - 1)
-    bot.sendPhoto(update.message.chat_id, open(folder + list_im[n_im], 'rb'))
+    bot.sendPhoto(update.message.chat_id, open(folder + list_im[n_im], 'rb', caption=capt))
 
 def readDB(file):
     """Reads a txt file as database."""
@@ -81,7 +81,13 @@ def batman_cb(bot, update):
 def AC_cb(bot, update):
     pick = readDB('ACDB.txt')
     capt = readDB('ACDB_captions.txt')
-    bot.sendPhoto(chat_id=update.message.chat_id, photo=pick, caption=capt)   
+    
+    rand = random.randint(0,10)
+    if rand < 6:
+        localImage(bot, update, "imgAC/")
+    else:
+        pick = readDB('ACDB.txt')
+        bot.sendPhoto(chat_id=update.message.chat_id, photo=pick, caption=capt)   
 
 def HP_cb(bot, update):
     rand = random.randint(0,4)
