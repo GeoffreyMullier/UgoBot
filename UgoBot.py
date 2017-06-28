@@ -89,7 +89,7 @@ def AC_cb(bot, update):
     
     rand = random.randint(0,10)
     if rand < 6:
-        localImage(bot, update, "imgAC/")
+        localImage(bot, update, "imgAC/", capt)
     else:
         pick = readDB('ACDB.txt')
         bot.sendPhoto(chat_id=update.message.chat_id, photo=pick, caption=capt)   
@@ -97,7 +97,7 @@ def AC_cb(bot, update):
 def HP_cb(bot, update):
     rand = random.randint(0,4)
     if rand == 0:
-        localImage(bot, update, "imgHP/")
+        localImage(bot, update, "imgHP/", "")
     else:
         pick = readDB('HPDB.txt')
         bot.sendPhoto(chat_id=update.message.chat_id, photo=pick)
