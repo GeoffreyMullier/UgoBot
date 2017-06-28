@@ -47,7 +47,7 @@ def prombiloop(bot, update):
         bot.send_message(chat_id=update.message.chat_id, text="prombi")
 	time.sleep(1.5)
    
-        prob = random.rand()
+        prob = random.random()
 	if prob > 0.9:
 	    goahead = False
 
