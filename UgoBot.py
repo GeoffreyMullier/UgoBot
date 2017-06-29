@@ -55,7 +55,7 @@ def localImage(bot, update, folder, capt):
     """Sends image from local folder"""
     list_im = os.listdir(folder)
     n_im = random.randint(0, len(list_im) - 1)
-    bot.sendPhoto(update.message.chat_id, open(folder + list_im[n_im], 'rb', capt))
+    bot.sendPhoto(update.message.chat_id, open(folder + list_im[n_im], 'rb'), capt)
 
 def readDB(file):
     """Reads a txt file as database."""
