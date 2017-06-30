@@ -21,6 +21,8 @@ listPrombi = ['prombi']
 listBatman = ['batman']
 listAC = ['cervelli','lavoro','work']
 listHarry = ['hp','barbara','marge']
+listHardcode = ['hardcoding','hardcode','hard code','hard coding','coding hard','hardcore']
+
 
 isOn = False
 ChatID = {-222291585: True, 388533863: True}
@@ -83,6 +85,11 @@ def batman_cb(bot, update):
     pick = readDB('batmanDB.txt')
     bot.sendPhoto(chat_id=update.message.chat_id, photo=pick, caption="NANANANA")
 
+def Hardcode_cb(bot, update):
+    """ready for batman."""
+    pick = readDB('hardcodeDB.txt')
+    bot.sendPhoto(chat_id=update.message.chat_id, photo=pick, caption="")
+
 def AC_cb(bot, update):
     pick = readDB('ACDB.txt')
     capt = readDB('ACDB_captions.txt')
@@ -117,7 +124,13 @@ class FilterBatman(BaseFilter):
 
     def filter(self, message):
         return any(word in message.text.lower() for word in listBatman)
-	
+
+class FilterHardcode(BaseFilter):
+    """Looks for Hardcode"""
+
+    def filter(self, message):
+        return any(word in message.text.lower() for word in listHardcode)
+
 class FilterAC(BaseFilter):
     """Looks for AC"""
 
@@ -149,6 +162,7 @@ def main():
     filter_Ugo = FilterUgo()
     filter_Prombi = FilterPrombi()
     filter_Batman = FilterBatman()
+    filter_Hardcode = FilterHardcode()
     filter_AC = FilterAC()
     filter_Harry = FilterHarryPotter()
     filter_OnOff = FilterOnOff()
@@ -174,7 +188,10 @@ def main():
     
     batman_handler = MessageHandler(filter_Batman & filter_OnOff, batman_cb)
     dispatcher.add_handler(batman_handler)
-    
+
+    hardcode_handler = MessageHandler(filter_Hardcode & filter_OnOff, Hardcode_cb)
+    dispatcher.add_handler(hardcode_handler)
+
     AC_handler = MessageHandler(filter_AC & filter_OnOff & filter_Sensitive, AC_cb)
     dispatcher.add_handler(AC_handler)
     
